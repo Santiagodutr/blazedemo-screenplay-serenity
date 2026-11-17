@@ -1,0 +1,115 @@
+// =====================================================================================
+//  BlazeDemo - Automatización E2E con Screenplay + Serenity BDD + Cucumber
+//  Proyecto generado con el scaffold io.github.jumosqu12.screenplayarchitecture (tarea spa)
+//  Cambios sobre lo generado: plugin de reportes Serenity (aggregate), Datafaker,
+//  paso de propiedades del sistema (-Ddemo.delay, -Dcucumber.filter.tags, ...) al JVM de pruebas.
+// =====================================================================================
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+	id 'io.github.jumosqu12.screenplayarchitecture' version '2.0.1'
+	id 'java'
+    id 'eclipse'
+    id 'idea'
+    // Genera el reporte HTML de Serenity con la tarea "aggregate" (4.1.3 es la versión 4.1.x publicada más cercana)
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.3'
+}
+
+group 'co.com.equipo.certificacion'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    // El scaffold trae 4.1.0; se alinea todo a 4.1.3 porque el plugin de reportes 4.1.0 no está publicado
+    // y no se deben mezclar versiones de Serenity (con 4.1.0 + plugin 4.1.3 no se generan las páginas de detalle).
+    serenityVersion = '4.1.3'
+    serenityCucumberVersion = '4.1.3'
+    lombokVersion = '1.18.30'
+    junit = '4.13.2'
+    serenityWebVersion = '4.1.3'
+    datafakerVersion = '2.1.0'
+}
+
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityCucumberVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityWebVersion"
+    implementation "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion"
+    implementation 'org.slf4j:slf4j-simple:2.0.5'
+
+    // Datos aleatorios de pasajeros (creatividad)
+    implementation "net.datafaker:datafaker:$rootProject.ext.datafakerVersion"
+
+    //Test compilation
+    testImplementation "junit:junit:$rootProject.ext.junit"
+    testImplementation("io.github.bonigarcia:webdrivermanager:5.4.1")
+
+    //Lombok dependencies
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly  "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Runner a ejecutar: -Prunner=SmokeRunner | NegativeRunner | KnownIssuesRunner (por defecto BlazeDemoRunner)
+def runner = project.findProperty('runner') ?: 'BlazeDemoRunner'
+
+tasks.named('test') {
+    // System configs
+    jvmArgs '-Dfile.encoding=UTF-8'
+    // Reenvía al JVM de pruebas las propiedades que controlan la ejecución
+    System.properties.each { k, v ->
+        def key = k.toString()
+        if (key.startsWith('demo.') || key.startsWith('cucumber.') || key.startsWith('webdriver.')
+                || key.startsWith('serenity.') || key == 'headless.mode' || key == 'environment') {
+            systemProperty key, v
+        }
+    }
+    filter {
+        includeTestsMatching "*.${runner}"
+    }
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        showStandardStreams = false
+    }
+    // Las pruebas web dependen del sitio, nunca se cachean
+    outputs.upToDateWhen { false }
+    // Aunque falle un escenario, se genera igual el reporte
+    finalizedBy 'aggregate'
+}
+
+gradle.startParameter.continueOnFailure = true
+
+serenity {
+    // Genera la página de detalle de cada escenario (pasos + capturas), no solo los resúmenes
+    generateOutcomes = true
+}
+
+// Evidencias: un GIF animado por escenario a partir de las capturas del reporte de Serenity.
+// Uso: gradlew generarVideos   (o -PreporteDir=... -PvideosDir=...)
+tasks.register('generarVideos', JavaExec) {
+    group = 'evidencias'
+    description = 'Genera un GIF por escenario con las capturas paso a paso del reporte Serenity'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'co.com.equipo.certificacion.blazedemo.evidencias.GeneradorVideos'
+    args = [project.findProperty('reporteDir') ?: 'target/site/serenity',
+            project.findProperty('videosDir') ?: 'evidencias/videos']
+    jvmArgs '-Dfile.encoding=UTF-8'
+}

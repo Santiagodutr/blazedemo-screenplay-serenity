@@ -1,0 +1,21 @@
+﻿> Task :clearReports
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+SmokeRunner > Compra de vuelos en BlazeDemo.Compra exitosa de un vuelo (ruta feliz E2E) PASSED
+
+> Task :aggregate
+Generating Serenity Reports
+  - Main report: file:///C:/Users/santi/OneDrive/Documentos/CALIDAD%20DE%20SW/TALLER_BLAZEDEMO/target/site/serenity/index.html
+      - Test Root: null
+      - Requirements base directory: null
+
+BUILD SUCCESSFUL in 39s
+7 actionable tasks: 7 executed
