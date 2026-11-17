@@ -14,6 +14,11 @@ public final class ReservePage {
             .locatedBy("//table[@class=\"table\"]/tbody/tr/td[6]");
     public static final Target BTN_ELEGIR_VUELO_FILA = Target.the("botón Choose This Flight de la fila {0}")
             .locatedBy("(//input[@value=\"Choose This Flight\"])[{0}]");
+    public static final Target ENCABEZADO_COLUMNA = Target.the("encabezado de la columna {0}")
+            .locatedBy("//table[@class=\"table\"]/thead/tr/th[{0}]");
+    /** Elemento que aparece solo si el HTML inyectado en la búsqueda se interpreta. */
+    public static final Target ELEMENTO_INYECTADO = Target.the("elemento HTML inyectado en el título")
+            .locatedBy("css:div.container h3 i#inyectado");
 
     private ReservePage() {
     }

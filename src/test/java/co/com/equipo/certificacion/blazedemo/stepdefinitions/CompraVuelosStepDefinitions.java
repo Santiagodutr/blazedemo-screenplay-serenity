@@ -2,10 +2,17 @@ package co.com.equipo.certificacion.blazedemo.stepdefinitions;
 
 import co.com.equipo.certificacion.blazedemo.models.DatosPago;
 import co.com.equipo.certificacion.blazedemo.questions.DatoDeLaConfirmacion;
+import co.com.equipo.certificacion.blazedemo.questions.FormularioDePago;
+import co.com.equipo.certificacion.blazedemo.questions.NumeroDeCompra;
+import co.com.equipo.certificacion.blazedemo.questions.PaginaActual;
 import co.com.equipo.certificacion.blazedemo.questions.Precio;
 import co.com.equipo.certificacion.blazedemo.questions.TextoEnPantalla;
+import co.com.equipo.certificacion.blazedemo.tasks.AbrirPaginaDirecta;
+import co.com.equipo.certificacion.blazedemo.tasks.AnotarNumeroDeCompra;
 import co.com.equipo.certificacion.blazedemo.tasks.CompletarPago;
+import co.com.equipo.certificacion.blazedemo.tasks.ComprarVuelo;
 import co.com.equipo.certificacion.blazedemo.tasks.ElegirVuelo;
+import co.com.equipo.certificacion.blazedemo.utils.Fechas;
 import co.com.equipo.certificacion.blazedemo.utils.GeneradorDatos;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Cuando;
@@ -19,6 +26,7 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.emptyOrNullString;
+import static org.hamcrest.Matchers.is;
 
 /** Pasos de elección de vuelo, pago y confirmación. Solo orquestan Tasks y Questions. */
 public class CompraVuelosStepDefinitions {
@@ -38,6 +46,112 @@ public class CompraVuelosStepDefinitions {
     @Cuando("elige el vuelo de menor precio")
     public void eligeElVueloDeMenorPrecio() {
         theActorInTheSpotlight().attemptsTo(ElegirVuelo.masBarato());
+    }
+
+    @Cuando("elige el vuelo de mayor precio")
+    public void eligeElVueloDeMayorPrecio() {
+        theActorInTheSpotlight().attemptsTo(ElegirVuelo.masCaro());
+    }
+
+    @Cuando("completa el pago de un pasajero aleatorio a nombre de {string}")
+    public void completaElPagoANombreDe(String nombre) {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(GeneradorDatos.pasajeroAleatorio(TARJETA_POR_DEFECTO)
+                .toBuilder().nombre(nombre).nombreEnTarjeta(nombre).build()));
+    }
+
+    @Cuando("completa el pago de un pasajero aleatorio con un nombre de {int} caracteres")
+    public void completaElPagoConNombreDeLongitud(int longitud) {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(GeneradorDatos.pasajeroAleatorio(TARJETA_POR_DEFECTO)
+                .toBuilder().nombre(GeneradorDatos.textoDeLongitud(longitud)).build()));
+    }
+
+    @Cuando("completa el pago de un pasajero aleatorio con mes de expiración {string}")
+    public void completaElPagoConMes(String mes) {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(
+                GeneradorDatos.pasajeroAleatorio(TARJETA_POR_DEFECTO).toBuilder().mes(mes).build()));
+    }
+
+    @Cuando("completa el pago de un pasajero aleatorio con código postal {string}")
+    public void completaElPagoConCodigoPostal(String codigoPostal) {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(
+                GeneradorDatos.pasajeroAleatorio(TARJETA_POR_DEFECTO).toBuilder().codigoPostal(codigoPostal).build()));
+    }
+
+    @Cuando("completa el pago solo con el nombre {string} y la tarjeta {string}")
+    public void completaElPagoConDatosMinimos(String nombre, String tarjeta) {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(DatosPago.minimos(nombre, tarjeta)));
+    }
+
+    @Cuando("completa el pago con espacios en blanco en todos los campos")
+    public void completaElPagoConEspacios() {
+        theActorInTheSpotlight().attemptsTo(CompletarPago.conLosDatos(DatosPago.soloEspacios()));
+    }
+
+    @Cuando("anota el número de la compra")
+    public void anotaElNumeroDeLaCompra() {
+        theActorInTheSpotlight().attemptsTo(AnotarNumeroDeCompra.deLaConfirmacion());
+    }
+
+    @Cuando("realiza otra compra completa desde {string} hacia {string}")
+    public void realizaOtraCompra(String origen, String destino) {
+        theActorInTheSpotlight().attemptsTo(ComprarVuelo.completo(origen, destino));
+    }
+
+    @Cuando("abre directamente la página de confirmación sin comprar")
+    public void abreLaConfirmacionSinComprar() {
+        theActorInTheSpotlight().attemptsTo(AbrirPaginaDirecta.deConfirmacion());
+    }
+
+    @Entonces("la confirmación debe registrar la fecha de hoy")
+    public void laConfirmacionDebeRegistrarLaFechaDeHoy() {
+        theActorInTheSpotlight().should(seeThat(DatoDeLaConfirmacion.llamado("Date"),
+                containsString(Fechas.hoyEnFormatoDeConfirmacion())));
+    }
+
+    @Entonces("el monto de la confirmación debe estar en {string}")
+    public void elMontoDebeEstarEn(String moneda) {
+        theActorInTheSpotlight().should(seeThat(DatoDeLaConfirmacion.llamado("Amount"), endsWith(moneda)));
+    }
+
+    @Entonces("el número de la nueva compra debe ser diferente al anotado")
+    public void elNumeroDeLaNuevaCompraDebeSerDiferente() {
+        theActorInTheSpotlight().should(seeThat(NumeroDeCompra.actual(),
+                not(equalTo(NumeroDeCompra.anotado().answeredBy(theActorInTheSpotlight())))));
+    }
+
+    @Entonces("el total de la compra debe ser la suma del precio y los impuestos")
+    public void elTotalDebeSerLaSuma() {
+        theActorInTheSpotlight().should(seeThat(Precio.totalEnPantalla(),
+                comparesEqualTo(Precio.precioMasImpuestos().answeredBy(theActorInTheSpotlight()))));
+    }
+
+    @Entonces("el vuelo elegido debe ser el de mayor precio de la lista")
+    public void elVueloElegidoDebeSerElMasCaro() {
+        theActorInTheSpotlight().should(seeThat(Precio.delVueloElegido(),
+                comparesEqualTo(Precio.masCaroListado().answeredBy(theActorInTheSpotlight()))));
+    }
+
+    @Entonces("la pestaña del navegador debe decir {string}")
+    public void laPestanaDebeDecir(String titulo) {
+        theActorInTheSpotlight().should(seeThat(PaginaActual.tituloDeLaPestana(), equalTo(titulo)));
+    }
+
+    @Entonces("el formulario debe precargar el mes {string} y el año {string}")
+    public void elFormularioDebePrecargar(String mes, String anio) {
+        theActorInTheSpotlight().should(
+                seeThat(FormularioDePago.mesPrecargado(), equalTo(mes)),
+                seeThat(FormularioDePago.anioPrecargado(), equalTo(anio))
+        );
+    }
+
+    @Entonces("la fecha precargada ya está vencida")
+    public void laFechaPrecargadaEstaVencida() {
+        theActorInTheSpotlight().should(seeThat(FormularioDePago.fechaPrecargadaVencida(), is(true)));
+    }
+
+    @Entonces("el sistema muestra una compra confirmada sin haber pagado")
+    public void elSistemaMuestraUnaCompraSinPagar() {
+        aceptaLaCompra();
     }
 
     @Cuando("completa el pago con los siguientes datos")

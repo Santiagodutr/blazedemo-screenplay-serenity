@@ -155,7 +155,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 16-11-2026 18:55</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 17-11-2026 16:39</span>
     <br style="clear:left"/>
 </div>
 
@@ -181,10 +181,12 @@ Quiero elegir un vuelo y pagarlo<br />
 Para recibir la confirmación de mi compra</p>
 <p>Criterios de aceptación:</p>
 <ul>
-<li>CA5: El usuario puede elegir un vuelo de la lista (primero, por posición o el más barato).</li>
+<li>CA5: El usuario puede elegir cualquier vuelo de la lista (por posición, el más barato o el más caro).</li>
 <li>CA6: El usuario puede completar el formulario de pago y recibir la confirmación.</li>
-<li>CA7: La confirmación muestra un Id, el estado &quot;PendingCapture&quot; y un código de autorización.</li>
+<li>CA7: La confirmación muestra un Id único, el estado &quot;PendingCapture&quot;, el monto en USD y la fecha de la compra.</li>
 <li>CA8: El precio del vuelo elegido debe mantenerse en la compra y en la confirmación.</li>
+<li>CA9: La página de compra muestra un total igual al precio más los impuestos.</li>
+<li>CA10: Cada pantalla del flujo se identifica con su propio título de pestaña.</li>
 </ul>
 
                                 </div>
@@ -269,7 +271,7 @@ Para recibir la confirmación de mi compra</p>
                 </div>
                 <div class="card-body">
                     <div>
-                        <pre>co.com.equipo.certificacion.blazedemo.stepdefinitions.CompraVuelosStepDefinitions.elMontoDebeSerIgualAlTotal(CompraVuelosStepDefinitions.java:127)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)<br /></pre>
+                        <pre>co.com.equipo.certificacion.blazedemo.stepdefinitions.CompraVuelosStepDefinitions.elMontoDebeSerIgualAlTotal(CompraVuelosStepDefinitions.java:241)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)<br />worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)<br /></pre>
                     </div>
 
                 </div>
@@ -305,71 +307,70 @@ Para recibir la confirmación de mi compra</p>
                 <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos elige un vuelo de la lista (criterio: POSICION 1) (completed)" width="0"/>
                 <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Y elige el primer vuelo de la lista (completed)" width="0"/>
                 <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Y completa el pago de un pasajero aleatorio con tarjeta &quot;Visa&quot;" width="0"/>
-                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Patricio God&iacute;nez, direccion=Carretera Ram&oacute;n Casanova, 59, ciudad=Manresa, estado=La Rioja, codigoPostal=76528, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=5, anio=2028, nombreEnTarjeta=Patricio God&iacute;nez, recordarDatos=false).nombre'" width="0"/>
-                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos escribe 'Patricio God&iacute;nez' en campo nombre" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Alejandro Garibay, direccion=Entrada Dolores, 3 Esc. 454, ciudad=Alcal&aacute; de Guadaira, estado=Galicia, codigoPostal=64054, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=6, anio=2029, nombreEnTarjeta=Alejandro Garibay, recordarDatos=false).nombre'" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos escribe 'Alejandro Garibay' en campo nombre" width="0"/>
                 <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos clears field campo nombre" width="0"/>
-                <img src="dfe0d67c6c44d2d81ef1821a5118b7bace00279e0ef006c837799afd8b1fef2c.png" title=" Carlos enters 'Patricio God&iacute;nez' into campo nombre" width="0"/>
-                <img src="dfe0d67c6c44d2d81ef1821a5118b7bace00279e0ef006c837799afd8b1fef2c.png" title=" Carlos escribe 'Patricio God&iacute;nez' en campo nombre (completed)" width="0"/>
-                <img src="c92efcab88c57d862994b35a952ec20873695b9718ec7d2f40c4b592867f771a.png" title=" Carlos escribe 'Carretera Ram&oacute;n Casanova, 59' en campo direcci&oacute;n" width="0"/>
-                <img src="c92efcab88c57d862994b35a952ec20873695b9718ec7d2f40c4b592867f771a.png" title=" Carlos clears field campo direcci&oacute;n" width="0"/>
-                <img src="13248d8b08815ef53c22ac82a8b476aecdbb5ce94e9ff27921cc72b4bc9b06aa.png" title=" Carlos clears field campo direcci&oacute;n (completed)" width="0"/>
-                <img src="13248d8b08815ef53c22ac82a8b476aecdbb5ce94e9ff27921cc72b4bc9b06aa.png" title=" Carlos enters 'Carretera Ram&oacute;n Casanova, 59' into campo direcci&oacute;n" width="0"/>
-                <img src="b2a5e19b90245be5fc6bab995524a5f6c127a93573e7f7b8051d70f10c053152.png" title=" Carlos enters 'Carretera Ram&oacute;n Casanova, 59' into campo direcci&oacute;n (completed)" width="0"/>
-                <img src="b2a5e19b90245be5fc6bab995524a5f6c127a93573e7f7b8051d70f10c053152.png" title=" Carlos escribe 'Carretera Ram&oacute;n Casanova, 59' en campo direcci&oacute;n (completed)" width="0"/>
-                <img src="b2a5e19b90245be5fc6bab995524a5f6c127a93573e7f7b8051d70f10c053152.png" title=" Carlos escribe 'Manresa' en campo ciudad" width="0"/>
-                <img src="7da2321a48b1d6a7e11295ecf8c1819472f886baf5849c126bce38dad8124286.png" title=" Carlos clears field campo ciudad" width="0"/>
-                <img src="faef59b2683ed64170217e433efbdbdbd7b0a6d08842cb89df20a21f8b3b7c91.png" title=" Carlos clears field campo ciudad (completed)" width="0"/>
-                <img src="faef59b2683ed64170217e433efbdbdbd7b0a6d08842cb89df20a21f8b3b7c91.png" title=" Carlos enters 'Manresa' into campo ciudad" width="0"/>
-                <img src="0692224f4463d05a949edc16a2adffe64208f3cd87384d2eda33c70ee7002e21.png" title=" Carlos enters 'Manresa' into campo ciudad (completed)" width="0"/>
-                <img src="0692224f4463d05a949edc16a2adffe64208f3cd87384d2eda33c70ee7002e21.png" title=" Carlos escribe 'Manresa' en campo ciudad (completed)" width="0"/>
-                <img src="0692224f4463d05a949edc16a2adffe64208f3cd87384d2eda33c70ee7002e21.png" title=" Carlos escribe 'La Rioja' en campo estado" width="0"/>
-                <img src="d773c50ede357e86d37488dbc945c6f97f4ce3a448d6fe9345a716d9853c64b3.png" title=" Carlos clears field campo estado" width="0"/>
-                <img src="856c4b1ddbf5715a67436d61003d0eea1f2108f69ea6533c447a6029a6b2d6c4.png" title=" Carlos clears field campo estado (completed)" width="0"/>
-                <img src="856c4b1ddbf5715a67436d61003d0eea1f2108f69ea6533c447a6029a6b2d6c4.png" title=" Carlos enters 'La Rioja' into campo estado" width="0"/>
-                <img src="080b438a07c1da708d172d5b01422cccaa6aa57229388616df7d6cece08062e6.png" title=" Carlos enters 'La Rioja' into campo estado (completed)" width="0"/>
-                <img src="080b438a07c1da708d172d5b01422cccaa6aa57229388616df7d6cece08062e6.png" title=" Carlos escribe 'La Rioja' en campo estado (completed)" width="0"/>
-                <img src="080b438a07c1da708d172d5b01422cccaa6aa57229388616df7d6cece08062e6.png" title=" Carlos escribe '76528' en campo c&oacute;digo postal" width="0"/>
-                <img src="cede40ee03dda8adc7f056ea5b52f375160dfd3b0be0def5742192b431469f0f.png" title=" Carlos clears field campo c&oacute;digo postal" width="0"/>
-                <img src="55e52dafcb30e2cdb2985ffaa5300a69c3b56b362198ed5e41860ae2a21154c4.png" title=" Carlos clears field campo c&oacute;digo postal (completed)" width="0"/>
-                <img src="55e52dafcb30e2cdb2985ffaa5300a69c3b56b362198ed5e41860ae2a21154c4.png" title=" Carlos enters '76528' into campo c&oacute;digo postal" width="0"/>
-                <img src="10cc05631717f5eab69b7f8c4fe05ad982944774c6e685b26b590b5acd69caea.png" title=" Carlos enters '76528' into campo c&oacute;digo postal (completed)" width="0"/>
-                <img src="10cc05631717f5eab69b7f8c4fe05ad982944774c6e685b26b590b5acd69caea.png" title=" Carlos escribe '76528' en campo c&oacute;digo postal (completed)" width="0"/>
-                <img src="c52a95c9987c74dc05fe6ed83c2849f095caa5e8bd4c1008a77f9ea8827e5229.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta" width="0"/>
-                <img src="75f068fb9f017d8727de34fcd6333b29d87f2c6542a5a966cefdff183461c0ac.png" title=" Carlos selects Visa on lista tipo de tarjeta" width="0"/>
-                <img src="75f068fb9f017d8727de34fcd6333b29d87f2c6542a5a966cefdff183461c0ac.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta (completed)" width="0"/>
-                <img src="75f068fb9f017d8727de34fcd6333b29d87f2c6542a5a966cefdff183461c0ac.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta" width="0"/>
-                <img src="75f068fb9f017d8727de34fcd6333b29d87f2c6542a5a966cefdff183461c0ac.png" title=" Carlos clears field campo n&uacute;mero de tarjeta" width="0"/>
-                <img src="3ad351982a91588972d83cf04c1946f83f308bf152d7b75a39b7f67e5e1884bb.png" title=" Carlos clears field campo n&uacute;mero de tarjeta (completed)" width="0"/>
-                <img src="3ad351982a91588972d83cf04c1946f83f308bf152d7b75a39b7f67e5e1884bb.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta" width="0"/>
-                <img src="57c0dea4958368fb7f44a499fc0d18ece7fc3b522df55223aa90260ac6ad0183.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta (completed)" width="0"/>
-                <img src="57c0dea4958368fb7f44a499fc0d18ece7fc3b522df55223aa90260ac6ad0183.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta (completed)" width="0"/>
-                <img src="1fb0a3bfa3679e7ce79ffe407403289aff2fde8eba4ada25608b51bb78d48d48.png" title=" Carlos escribe '5' en campo mes" width="0"/>
-                <img src="1fb0a3bfa3679e7ce79ffe407403289aff2fde8eba4ada25608b51bb78d48d48.png" title=" Carlos clears field campo mes" width="0"/>
-                <img src="d610b0bbe0d567a5580432681ecfc5714b560aabe94097fae5d6c86b1e30be48.png" title=" Carlos clears field campo mes (completed)" width="0"/>
-                <img src="d610b0bbe0d567a5580432681ecfc5714b560aabe94097fae5d6c86b1e30be48.png" title=" Carlos enters '5' into campo mes" width="0"/>
-                <img src="0cf5513a2f086b42a59a05bd0b1f36d272711417986ba112d2e46aa9b9fbf39e.png" title=" Carlos enters '5' into campo mes (completed)" width="0"/>
-                <img src="0cf5513a2f086b42a59a05bd0b1f36d272711417986ba112d2e46aa9b9fbf39e.png" title=" Carlos escribe '5' en campo mes (completed)" width="0"/>
-                <img src="0cf5513a2f086b42a59a05bd0b1f36d272711417986ba112d2e46aa9b9fbf39e.png" title=" Carlos escribe '2028' en campo a&ntilde;o" width="0"/>
-                <img src="d54d7590857f9123703b790616588d6ff3b69a333e467ad126288b176d28b9e8.png" title=" Carlos clears field campo a&ntilde;o" width="0"/>
-                <img src="5a327e6be6fa30bbddafaa73c3ede5bbe539764de161ad9c828ade651b8317c9.png" title=" Carlos clears field campo a&ntilde;o (completed)" width="0"/>
-                <img src="5a327e6be6fa30bbddafaa73c3ede5bbe539764de161ad9c828ade651b8317c9.png" title=" Carlos enters '2028' into campo a&ntilde;o" width="0"/>
-                <img src="e50cfa80c48a785433c3de8f32188372c5781daeaa6b4c3a92ec932d543c9cd8.png" title=" Carlos enters '2028' into campo a&ntilde;o (completed)" width="0"/>
-                <img src="e50cfa80c48a785433c3de8f32188372c5781daeaa6b4c3a92ec932d543c9cd8.png" title=" Carlos escribe '2028' en campo a&ntilde;o (completed)" width="0"/>
-                <img src="e50cfa80c48a785433c3de8f32188372c5781daeaa6b4c3a92ec932d543c9cd8.png" title=" Carlos escribe 'Patricio God&iacute;nez' en campo nombre en la tarjeta" width="0"/>
-                <img src="14fc796963ee3e437337ef2d4173dcb9e06b482aa1ad98841b3f32422373a67d.png" title=" Carlos clears field campo nombre en la tarjeta" width="0"/>
-                <img src="6c1f9a53c859f3ed00cf702b380c35c6ebe412b62844a32712bad3d86fe0ec24.png" title=" Carlos clears field campo nombre en la tarjeta (completed)" width="0"/>
-                <img src="6c1f9a53c859f3ed00cf702b380c35c6ebe412b62844a32712bad3d86fe0ec24.png" title=" Carlos enters 'Patricio God&iacute;nez' into campo nombre en la tarjeta" width="0"/>
-                <img src="48363ea9393c111e9292dc4a6088de716876b5dad95652229fc366d75c3ee826.png" title=" Carlos enters 'Patricio God&iacute;nez' into campo nombre en la tarjeta (completed)" width="0"/>
-                <img src="48363ea9393c111e9292dc4a6088de716876b5dad95652229fc366d75c3ee826.png" title=" Carlos escribe 'Patricio God&iacute;nez' en campo nombre en la tarjeta (completed)" width="0"/>
-                <img src="665afe5c093f2eadb2d8b5cb37620134a5b9b6196a435f1f36b5da9dafe139d7.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight" width="0"/>
-                <img src="b9933160d44c585f15c8a80382513383e5bfe97da3524702db09aba37578382e.png" title=" Carlos clicks on bot&oacute;n Purchase Flight" width="0"/>
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Carlos clicks on bot&oacute;n Purchase Flight (completed)" width="0"/>
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight (completed)" width="0"/>
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Patricio God&iacute;nez, direccion=Carretera Ram&oacute;n Casanova, 59, ciudad=Manresa, estado=La Rioja, codigoPostal=76528, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=5, anio=2028, nombreEnTarjeta=Patricio God&iacute;nez, recordarDatos=false).nombre' (completed)" width="0"/>
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Y completa el pago de un pasajero aleatorio con tarjeta &quot;Visa&quot; (completed)" width="0"/>
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Entonces el monto de la confirmaci&oacute;n debe ser igual al total de la compra" width="0"/>
+                <img src="1b14dc7d31f79bd68673a9176625319bcdc3c65d560c5dc119b1779cac245c59.png" title=" Carlos enters 'Alejandro Garibay' into campo nombre" width="0"/>
+                <img src="1b14dc7d31f79bd68673a9176625319bcdc3c65d560c5dc119b1779cac245c59.png" title=" Carlos escribe 'Alejandro Garibay' en campo nombre (completed)" width="0"/>
+                <img src="1b14dc7d31f79bd68673a9176625319bcdc3c65d560c5dc119b1779cac245c59.png" title=" Carlos escribe 'Entrada Dolores, 3 Esc. 454' en campo direcci&oacute;n" width="0"/>
+                <img src="614cc0efe9da9b443c891ccf9a7af5b6e6a629620eed60aa9c68ef7cf7971c02.png" title=" Carlos clears field campo direcci&oacute;n" width="0"/>
+                <img src="e055f34992c585442d98356053bae02a1d1ce203d1fea43f4a28c5b75427953d.png" title=" Carlos clears field campo direcci&oacute;n (completed)" width="0"/>
+                <img src="e055f34992c585442d98356053bae02a1d1ce203d1fea43f4a28c5b75427953d.png" title=" Carlos enters 'Entrada Dolores, 3 Esc. 454' into campo direcci&oacute;n" width="0"/>
+                <img src="0d688665713afb00a8630f26a9038cb051556a0bf9443cfcf8dc67ad6e4dc44d.png" title=" Carlos enters 'Entrada Dolores, 3 Esc. 454' into campo direcci&oacute;n (completed)" width="0"/>
+                <img src="0d688665713afb00a8630f26a9038cb051556a0bf9443cfcf8dc67ad6e4dc44d.png" title=" Carlos escribe 'Entrada Dolores, 3 Esc. 454' en campo direcci&oacute;n (completed)" width="0"/>
+                <img src="0d688665713afb00a8630f26a9038cb051556a0bf9443cfcf8dc67ad6e4dc44d.png" title=" Carlos escribe 'Alcal&aacute; de Guadaira' en campo ciudad" width="0"/>
+                <img src="9f874b544b9157ca0af76e19fb0a3d6ab9b4b4affd5e89e7f026177831ad4c54.png" title=" Carlos clears field campo ciudad" width="0"/>
+                <img src="2813cb6056d648054652f1a369759fd4d3c0e56aaa8e71842585d5251f618ae9.png" title=" Carlos clears field campo ciudad (completed)" width="0"/>
+                <img src="2813cb6056d648054652f1a369759fd4d3c0e56aaa8e71842585d5251f618ae9.png" title=" Carlos enters 'Alcal&aacute; de Guadaira' into campo ciudad" width="0"/>
+                <img src="21b8454dd7ddeefc2db3269785b4c44c45eefad6318151e9e740dbb95aa9413d.png" title=" Carlos enters 'Alcal&aacute; de Guadaira' into campo ciudad (completed)" width="0"/>
+                <img src="21b8454dd7ddeefc2db3269785b4c44c45eefad6318151e9e740dbb95aa9413d.png" title=" Carlos escribe 'Alcal&aacute; de Guadaira' en campo ciudad (completed)" width="0"/>
+                <img src="21b8454dd7ddeefc2db3269785b4c44c45eefad6318151e9e740dbb95aa9413d.png" title=" Carlos escribe 'Galicia' en campo estado" width="0"/>
+                <img src="94e94cce7d57a40d3de0b9c666aca196c23a03e8c175b33bc5bb032f9a204438.png" title=" Carlos clears field campo estado" width="0"/>
+                <img src="0d45f2ef2d88cd05eddb2568b059ed7aa7365ade448c87d4a156bc59968d7219.png" title=" Carlos clears field campo estado (completed)" width="0"/>
+                <img src="0d45f2ef2d88cd05eddb2568b059ed7aa7365ade448c87d4a156bc59968d7219.png" title=" Carlos enters 'Galicia' into campo estado" width="0"/>
+                <img src="1d3c6a342926f3af4b1e38d5f4c2ca6cdee1b1ac140769b79eb3d7f57f2e61e1.png" title=" Carlos enters 'Galicia' into campo estado (completed)" width="0"/>
+                <img src="1d3c6a342926f3af4b1e38d5f4c2ca6cdee1b1ac140769b79eb3d7f57f2e61e1.png" title=" Carlos escribe 'Galicia' en campo estado (completed)" width="0"/>
+                <img src="263dadcff20f36e41a48c9f7bedb1166657746e3bab766aa654d1aa67f31c3b8.png" title=" Carlos escribe '64054' en campo c&oacute;digo postal" width="0"/>
+                <img src="263dadcff20f36e41a48c9f7bedb1166657746e3bab766aa654d1aa67f31c3b8.png" title=" Carlos clears field campo c&oacute;digo postal" width="0"/>
+                <img src="f7577dc0a51b277cb1ee0c6ec0430e50067b45d857ab84cc8f2e99b425837d56.png" title=" Carlos clears field campo c&oacute;digo postal (completed)" width="0"/>
+                <img src="f7577dc0a51b277cb1ee0c6ec0430e50067b45d857ab84cc8f2e99b425837d56.png" title=" Carlos enters '64054' into campo c&oacute;digo postal" width="0"/>
+                <img src="84c0270681b0d00c7b025b6cc182357414ad5e73caf9b9e36f6303bc0fe252ae.png" title=" Carlos enters '64054' into campo c&oacute;digo postal (completed)" width="0"/>
+                <img src="84c0270681b0d00c7b025b6cc182357414ad5e73caf9b9e36f6303bc0fe252ae.png" title=" Carlos escribe '64054' en campo c&oacute;digo postal (completed)" width="0"/>
+                <img src="d4d4b4ad3011289d1ab79f36eaae3f84841d370186a33b6ff5544c8234cb688c.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta" width="0"/>
+                <img src="77ba571d78eacb1e51035d4ed9c1f19a3d4066f6dc623d1ae36cbea367d261e4.png" title=" Carlos selects Visa on lista tipo de tarjeta" width="0"/>
+                <img src="77ba571d78eacb1e51035d4ed9c1f19a3d4066f6dc623d1ae36cbea367d261e4.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta (completed)" width="0"/>
+                <img src="77ba571d78eacb1e51035d4ed9c1f19a3d4066f6dc623d1ae36cbea367d261e4.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="77ba571d78eacb1e51035d4ed9c1f19a3d4066f6dc623d1ae36cbea367d261e4.png" title=" Carlos clears field campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="2e302d26a0d4d59b262ef41b2cb418c1ccb942d79b033cd49f9df8ce50030822.png" title=" Carlos clears field campo n&uacute;mero de tarjeta (completed)" width="0"/>
+                <img src="2e302d26a0d4d59b262ef41b2cb418c1ccb942d79b033cd49f9df8ce50030822.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="b8e83a8f5a7d6e39c6e51f5c13bbdbb1db838820bd0dafc52bbd359fd3eed9e5.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta (completed)" width="0"/>
+                <img src="b8e83a8f5a7d6e39c6e51f5c13bbdbb1db838820bd0dafc52bbd359fd3eed9e5.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta (completed)" width="0"/>
+                <img src="b8e83a8f5a7d6e39c6e51f5c13bbdbb1db838820bd0dafc52bbd359fd3eed9e5.png" title=" Carlos escribe '6' en campo mes" width="0"/>
+                <img src="cf051418b06003531a9f5040e34ec4833ac77a87b1b4cfde75ce8da8829e97ca.png" title=" Carlos clears field campo mes" width="0"/>
+                <img src="c8e30d3a0997928a1c4652e8beeb1687f3a68c2771a78d2f99b823c6f76a5545.png" title=" Carlos enters '6' into campo mes" width="0"/>
+                <img src="656f8ee17a9f41b43161610b86c21425d812df0086f98ddd33e6dac4ac6fffad.png" title=" Carlos enters '6' into campo mes (completed)" width="0"/>
+                <img src="656f8ee17a9f41b43161610b86c21425d812df0086f98ddd33e6dac4ac6fffad.png" title=" Carlos escribe '6' en campo mes (completed)" width="0"/>
+                <img src="656f8ee17a9f41b43161610b86c21425d812df0086f98ddd33e6dac4ac6fffad.png" title=" Carlos escribe '2029' en campo a&ntilde;o" width="0"/>
+                <img src="c16ee8c9ee579707870347e516348a8841d2a403496e90fbc1628ffc43bc1f91.png" title=" Carlos clears field campo a&ntilde;o" width="0"/>
+                <img src="4aa47e37df0907c54ef3151e2f30138946a938e6c1883a7c4e7bd36bbc55fd74.png" title=" Carlos clears field campo a&ntilde;o (completed)" width="0"/>
+                <img src="4aa47e37df0907c54ef3151e2f30138946a938e6c1883a7c4e7bd36bbc55fd74.png" title=" Carlos enters '2029' into campo a&ntilde;o" width="0"/>
+                <img src="39d0ba7d7422316cf21c67d801a0a9a5e2a63062aa3ba4accf6fa43ddc815463.png" title=" Carlos enters '2029' into campo a&ntilde;o (completed)" width="0"/>
+                <img src="39d0ba7d7422316cf21c67d801a0a9a5e2a63062aa3ba4accf6fa43ddc815463.png" title=" Carlos escribe '2029' en campo a&ntilde;o (completed)" width="0"/>
+                <img src="39d0ba7d7422316cf21c67d801a0a9a5e2a63062aa3ba4accf6fa43ddc815463.png" title=" Carlos escribe 'Alejandro Garibay' en campo nombre en la tarjeta" width="0"/>
+                <img src="dd5817d218fda042184696d6b7d8d72523c2ff67b5247a453817283616c63fb5.png" title=" Carlos clears field campo nombre en la tarjeta" width="0"/>
+                <img src="2a756855277e1abfea8b8e4b09d312b99f03475d71e49fb9e3292c7c01b12953.png" title=" Carlos clears field campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="2a756855277e1abfea8b8e4b09d312b99f03475d71e49fb9e3292c7c01b12953.png" title=" Carlos enters 'Alejandro Garibay' into campo nombre en la tarjeta" width="0"/>
+                <img src="3d34990925eb49535c2729dc01bc108f241bb90a8f3c63aedcc4606ef238b387.png" title=" Carlos enters 'Alejandro Garibay' into campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="3d34990925eb49535c2729dc01bc108f241bb90a8f3c63aedcc4606ef238b387.png" title=" Carlos escribe 'Alejandro Garibay' en campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="51b121b6d593b859b68294dc4f5f1387109b41f375dbbc07da2a72b9e665b9cb.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight" width="0"/>
+                <img src="78ed77089669fef3da0c942ec3ef6459dc2c2e6d3f2c777396c0bac7a93eab9d.png" title=" Carlos clicks on bot&oacute;n Purchase Flight" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Carlos clicks on bot&oacute;n Purchase Flight (completed)" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight (completed)" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Alejandro Garibay, direccion=Entrada Dolores, 3 Esc. 454, ciudad=Alcal&aacute; de Guadaira, estado=Galicia, codigoPostal=64054, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=6, anio=2029, nombreEnTarjeta=Alejandro Garibay, recordarDatos=false).nombre' (completed)" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Y completa el pago de un pasajero aleatorio con tarjeta &quot;Visa&quot; (completed)" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Entonces el monto de la confirmaci&oacute;n debe ser igual al total de la compra" width="0"/>
 
-                <img src="94f7b4325847aa2ad818f6c34bd8b5bec7850c2632be564ac9cd91c8f50bd237.png" title=" Then el monto de la confirmaci&oacute;n should be a value equal to (914.76): <span class='failing-color'>FAILURE</span>" width="0"/>
+                <img src="4802f9acf238aebf9bfa863687717f54f45030bb9b37d232aee5482603d8386d.png" title=" Then el monto de la confirmaci&oacute;n should be a value equal to (914.76): <span class='failing-color'>FAILURE</span>" width="0"/>
             </div>
         </div>
 

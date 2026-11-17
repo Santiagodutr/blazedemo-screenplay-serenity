@@ -4,6 +4,7 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.SelectOptions;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static co.com.equipo.certificacion.blazedemo.userinterfaces.HomePage.LISTA_DESTINO;
 import static co.com.equipo.certificacion.blazedemo.userinterfaces.HomePage.LISTA_ORIGEN;
@@ -22,5 +23,15 @@ public final class CiudadesDisponibles {
     public static Question<List<String>> comoOrigen() {
         return Question.about("las ciudades de origen disponibles")
                 .answeredBy(actor -> SelectOptions.of(LISTA_ORIGEN).answeredBy(actor));
+    }
+
+    /** Ciudades que aparecen tanto en origen como en destino (lista vacía si las listas no se cruzan). */
+    public static Question<List<String>> enAmbasListas() {
+        return Question.about("las ciudades que están en ambas listas")
+                .answeredBy(actor -> {
+                    List<String> destinos = comoDestino().answeredBy(actor);
+                    return comoOrigen().answeredBy(actor).stream()
+                            .filter(destinos::contains).collect(Collectors.toList());
+                });
     }
 }

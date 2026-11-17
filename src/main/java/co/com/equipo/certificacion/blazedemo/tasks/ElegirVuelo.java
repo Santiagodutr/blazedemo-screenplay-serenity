@@ -26,7 +26,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 public class ElegirVuelo implements Task {
 
     /** Criterio para escoger el vuelo. */
-    public enum Criterio { POSICION, MAS_BARATO }
+    public enum Criterio { POSICION, MAS_BARATO, MAS_CARO }
 
     private final Criterio criterio;
     private final int posicion;
@@ -46,6 +46,10 @@ public class ElegirVuelo implements Task {
 
     public static ElegirVuelo masBarato() {
         return instrumented(ElegirVuelo.class, Criterio.MAS_BARATO, 0);
+    }
+
+    public static ElegirVuelo masCaro() {
+        return instrumented(ElegirVuelo.class, Criterio.MAS_CARO, 0);
     }
 
     @Override
@@ -70,6 +74,9 @@ public class ElegirVuelo implements Task {
         }
         if (criterio == Criterio.MAS_BARATO) {
             return vuelos.stream().min(Comparator.comparing(Vuelo::getPrecio)).orElseThrow();
+        }
+        if (criterio == Criterio.MAS_CARO) {
+            return vuelos.stream().max(Comparator.comparing(Vuelo::getPrecio)).orElseThrow();
         }
         if (posicion < 1 || posicion > vuelos.size()) {
             throw new VueloNoDisponibleException("No existe el vuelo en la posición " + posicion

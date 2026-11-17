@@ -28,7 +28,7 @@ function Correr-Suite($runner, $nombre) {
 function Pagina-De($dir, $titulo) {
     foreach ($j in Get-ChildItem "$dir\*.json") {
         $texto = Get-Content $j.FullName -Raw -Encoding UTF8
-        if ($texto -match ('"title":"' + [regex]::Escape($titulo))) {
+        if ($texto -match ('"title":"(?:[^"\\]|\\.)*' + [regex]::Escape($titulo))) {
             $html = $j.FullName -replace '\.json$', '.html'
             if (Test-Path $html) { return $html }
         }
@@ -59,6 +59,12 @@ Capturar '07_resumen_defectos_conocidos.png' "$dc\index.html" 1800
 Capturar '08_defecto_precio_compra_distinto.png' (Pagina-De $dc 'El precio de la compra coincide') 2600
 Capturar '09_defecto_monto_confirmacion.png' (Pagina-De $dc 'El monto de la confirmaci') 3000
 Capturar '10_defecto_tarjeta_confirmacion.png' (Pagina-De $dc 'La confirmaci') 3000
+Capturar '11_hallazgo_inyeccion_html.png' (Pagina-De $sp 'Inyecci') 2400
+Capturar '12_hallazgo_confirmacion_sin_compra.png' (Pagina-De $sp 'Abrir la confirmaci') 2400
+Capturar '13_hallazgo_home_lleva_a_login.png' (Pagina-De $sp 'lleva al inicio de sesi') 2400
+Capturar '14_cuenta_campos_obligatorios_registro.png' (Pagina-De $sp 'El registro exige') 2400
+Capturar '15_outline_cualquier_vuelo.png' (Pagina-De $sp 'Cualquier vuelo de la lista') 3600
+Capturar '16_dos_compras_ids_distintos.png' (Pagina-De $sp 'Dos compras seguidas') 3000
 
 # Comprimir los reportes para entregarlos
 Compress-Archive -Force -Path $sp -DestinationPath "$ev\reporte-serenity-suite-principal.zip"

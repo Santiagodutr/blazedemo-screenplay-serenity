@@ -8,6 +8,8 @@ public final class PurchasePage {
             .locatedBy("css:div.container h2");
     public static final Target PRECIO_VUELO = Target.the("precio del vuelo")
             .locatedBy("//p[starts-with(normalize-space(),\"Price:\")]");
+    public static final Target IMPUESTOS = Target.the("impuestos y cargos")
+            .locatedBy("//p[starts-with(normalize-space(),\"Arbitrary Fees and Taxes:\")]");
     public static final Target COSTO_TOTAL = Target.the("costo total")
             .locatedBy("//p[starts-with(normalize-space(),\"Total Cost:\")]/em");
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 import static co.com.equipo.certificacion.blazedemo.userinterfaces.PurchasePage.PRECIO_VUELO;
 import static co.com.equipo.certificacion.blazedemo.userinterfaces.PurchasePage.COSTO_TOTAL;
+import static co.com.equipo.certificacion.blazedemo.userinterfaces.PurchasePage.IMPUESTOS;
 import static co.com.equipo.certificacion.blazedemo.utils.Constantes.TOTAL_COMPRA;
 import static co.com.equipo.certificacion.blazedemo.utils.Constantes.VUELOS_LISTADOS;
 import static co.com.equipo.certificacion.blazedemo.utils.Constantes.VUELO_ELEGIDO;
@@ -35,6 +36,26 @@ public final class Precio {
         return Question.about("el precio más barato de la lista")
                 .answeredBy(actor -> actor.<List<Vuelo>>recall(VUELOS_LISTADOS).stream()
                         .map(Vuelo::getPrecio).min(Comparator.naturalOrder()).orElseThrow());
+    }
+
+    /** Mayor precio entre los vuelos que el actor vio listados. */
+    public static Question<BigDecimal> masCaroListado() {
+        return Question.about("el precio más caro de la lista vista")
+                .answeredBy(actor -> actor.<List<Vuelo>>recall(VUELOS_LISTADOS).stream()
+                        .map(Vuelo::getPrecio).max(Comparator.naturalOrder()).orElseThrow());
+    }
+
+    /** Impuestos y cargos de la página de compra ("Arbitrary Fees and Taxes: ..."). */
+    public static Question<BigDecimal> impuestosEnLaCompra() {
+        return Question.about("los impuestos de la compra")
+                .answeredBy(actor -> ConvertirPrecio.desdeTexto(Text.of(IMPUESTOS).answeredBy(actor)));
+    }
+
+    /** Precio más impuestos según la página de compra. */
+    public static Question<BigDecimal> precioMasImpuestos() {
+        return Question.about("el precio más los impuestos")
+                .answeredBy(actor -> enLaPaginaDeCompra().answeredBy(actor)
+                        .add(impuestosEnLaCompra().answeredBy(actor)));
     }
 
     /** Mayor precio entre los vuelos que se ven en la tabla de resultados. */

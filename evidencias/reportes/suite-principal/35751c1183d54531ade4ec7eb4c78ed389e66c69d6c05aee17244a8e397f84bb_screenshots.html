@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- Nivo Slider -->
+<link rel="stylesheet" href="nivo-slider/3.2/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="nivo-slider/3.2/themes/default/default.css" type="text/css" media="screen" />
+<script src="nivo-slider/3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        var screenshotIndex = getUrlVars()["screenshot"];
+
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                startSlide: screenshotIndex,
+                effect: 'fade',
+                animSpeed: 200,
+                manualAdvance: true
+            });
+        });
+
+        $(window).keydown(function(e) {
+            switch(e.which) {
+                case 37:
+                    $('a.nivo-prevNav').click();
+                    break;
+                case 39:
+                    $('a.nivo-nextNav').click();
+                    break;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="e7b40d3c3a295aebf941ab3008fdc191bdfe6fef2aae1f31f86d9cd56db131bc.html">Compra Vuelos</a></span>
+                > <span class="truncate-60"><a
+                    href="35751c1183d54531ade4ec7eb4c78ed389e66c69d6c05aee17244a8e397f84bb.html">La confirmaci&oacute;n registra la fecha del d&iacute;a de la compra </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 17-11-2026 16:34</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">Compra De Vuelos En Blazedemo </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                <p>Como viajero<br />
+Quiero elegir un vuelo y pagarlo<br />
+Para recibir la confirmación de mi compra</p>
+<p>Criterios de aceptación:</p>
+<ul>
+<li>CA5: El usuario puede elegir cualquier vuelo de la lista (por posición, el más barato o el más caro).</li>
+<li>CA6: El usuario puede completar el formulario de pago y recibir la confirmación.</li>
+<li>CA7: La confirmación muestra un Id único, el estado &quot;PendingCapture&quot;, el monto en USD y la fecha de la compra.</li>
+<li>CA8: El precio del vuelo elegido debe mantenerse en la compra y en la confirmación.</li>
+<li>CA9: La página de compra muestra un total igual al precio más los impuestos.</li>
+<li>CA10: Cada pantalla del flujo se identifica con su propio título de pestaña.</li>
+</ul>
+
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="b7e33abe7619d82cefda21fe358074425199aafab4998745a7f9803cfbdd6a6a.html">Compra
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="9c7cd5a98cacc77d13987bb85c04e883f4cf0201d58764dc58c776bf9cdd5435.html">Blazedemo
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="ecfeca090155dddf0c8aff51f7a7f0570613d32c7e1c3c3bc8cd68dbf71acdfd.html">Happy
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">La confirmaci&oacute;n registra la fecha del d&iacute;a de la compra
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+        <div class="slider-wrapper theme-default">
+            <div id="slider">
+                <img src="8f7378556494cab4da96b759083a94e9160fa638b39fac98cce5091bb66a96dd.png" title=" Dado que Carlos abre la p&aacute;gina de BlazeDemo" width="0"/>
+                <img src="8f7378556494cab4da96b759083a94e9160fa638b39fac98cce5091bb66a96dd.png" title=" Carlos abre la p&aacute;gina principal de BlazeDemo" width="0"/>
+                <img src="8f7378556494cab4da96b759083a94e9160fa638b39fac98cce5091bb66a96dd.png" title=" Carlos opens the pages.blazedemo page" width="0"/>
+                <img src="8f7378556494cab4da96b759083a94e9160fa638b39fac98cce5091bb66a96dd.png" title=" Carlos abre la p&aacute;gina principal de BlazeDemo (completed)" width="0"/>
+                <img src="8f7378556494cab4da96b759083a94e9160fa638b39fac98cce5091bb66a96dd.png" title=" Dado que Carlos abre la p&aacute;gina de BlazeDemo (completed)" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Cuando busca vuelos desde &quot;Boston&quot; hacia &quot;Rome&quot;" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos busca vuelos desde Boston hacia Rome" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos selecciona 'Boston' en lista de ciudad de origen" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos selects Boston on lista de ciudad de origen" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos selecciona 'Boston' en lista de ciudad de origen (completed)" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos selecciona 'Rome' en lista de ciudad de destino" width="0"/>
+                <img src="1b94bdb3d3b8777689d5af833219a43d2d85ff41a24de135b6bbed5de3c83e88.png" title=" Carlos selects Rome on lista de ciudad de destino" width="0"/>
+                <img src="4816d3954a5e116bd4b74a3cfdf394260c2f9276bf1f0f8118939f5080f8167a.png" title=" Carlos selects Rome on lista de ciudad de destino (completed)" width="0"/>
+                <img src="4816d3954a5e116bd4b74a3cfdf394260c2f9276bf1f0f8118939f5080f8167a.png" title=" Carlos selecciona 'Rome' en lista de ciudad de destino (completed)" width="0"/>
+                <img src="4816d3954a5e116bd4b74a3cfdf394260c2f9276bf1f0f8118939f5080f8167a.png" title=" Carlos hace clic en bot&oacute;n Find Flights" width="0"/>
+                <img src="4816d3954a5e116bd4b74a3cfdf394260c2f9276bf1f0f8118939f5080f8167a.png" title=" Carlos clicks on bot&oacute;n Find Flights" width="0"/>
+                <img src="330fd63312d81f64eab6c7516c4dbb69d37a8ab49e0f06bf53a4b80702d5e76a.png" title=" Carlos clicks on bot&oacute;n Find Flights (completed)" width="0"/>
+                <img src="330fd63312d81f64eab6c7516c4dbb69d37a8ab49e0f06bf53a4b80702d5e76a.png" title=" Carlos hace clic en bot&oacute;n Find Flights (completed)" width="0"/>
+                <img src="330fd63312d81f64eab6c7516c4dbb69d37a8ab49e0f06bf53a4b80702d5e76a.png" title=" Carlos busca vuelos desde Boston hacia Rome (completed)" width="0"/>
+                <img src="330fd63312d81f64eab6c7516c4dbb69d37a8ab49e0f06bf53a4b80702d5e76a.png" title=" Cuando busca vuelos desde &quot;Boston&quot; hacia &quot;Rome&quot; (completed)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Y elige el primer vuelo de la lista" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos elige un vuelo de la lista (criterio: POSICION 1)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos hace clic en 'Choose This Flight' de la fila 1" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos hace clic en bot&oacute;n Choose This Flight de la fila 1" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos clicks on bot&oacute;n Choose This Flight de la fila 1" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos hace clic en bot&oacute;n Choose This Flight de la fila 1 (completed)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos hace clic en 'Choose This Flight' de la fila 1 (completed)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos elige un vuelo de la lista (criterio: POSICION 1) (completed)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Y elige el primer vuelo de la lista (completed)" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Y completa el pago de un pasajero aleatorio con tarjeta &quot;Visa&quot;" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Patricio Mej&iacute;a, direccion=Poblado Yolanda 5 Puerta 681, ciudad=Badajoz, estado=Cantabria, codigoPostal=44301, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=3, anio=2027, nombreEnTarjeta=Patricio Mej&iacute;a, recordarDatos=false).nombre'" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos escribe 'Patricio Mej&iacute;a' en campo nombre" width="0"/>
+                <img src="5e6456df994b2e91cc1443777a34d5ac6ea53e22f41a45f2e0a62a67ef921d1c.png" title=" Carlos clears field campo nombre" width="0"/>
+                <img src="98bc9210ffb631c5ac5a431d7b966c775199c18f006c2b26f6a96d9a7a79cb2a.png" title=" Carlos enters 'Patricio Mej&iacute;a' into campo nombre" width="0"/>
+                <img src="98bc9210ffb631c5ac5a431d7b966c775199c18f006c2b26f6a96d9a7a79cb2a.png" title=" Carlos escribe 'Patricio Mej&iacute;a' en campo nombre (completed)" width="0"/>
+                <img src="98bc9210ffb631c5ac5a431d7b966c775199c18f006c2b26f6a96d9a7a79cb2a.png" title=" Carlos escribe 'Poblado Yolanda 5 Puerta 681' en campo direcci&oacute;n" width="0"/>
+                <img src="98bc9210ffb631c5ac5a431d7b966c775199c18f006c2b26f6a96d9a7a79cb2a.png" title=" Carlos clears field campo direcci&oacute;n" width="0"/>
+                <img src="5e2569dbda2ec226f0ed448e3ea2d1447771ac1558270b6fd79cfb1225635e16.png" title=" Carlos clears field campo direcci&oacute;n (completed)" width="0"/>
+                <img src="5e2569dbda2ec226f0ed448e3ea2d1447771ac1558270b6fd79cfb1225635e16.png" title=" Carlos enters 'Poblado Yolanda 5 Puerta 681' into campo direcci&oacute;n" width="0"/>
+                <img src="1b732b401e12e3405244c23ce471449edbfcc5804998d5a0d7b5ca57e0885013.png" title=" Carlos enters 'Poblado Yolanda 5 Puerta 681' into campo direcci&oacute;n (completed)" width="0"/>
+                <img src="1b732b401e12e3405244c23ce471449edbfcc5804998d5a0d7b5ca57e0885013.png" title=" Carlos escribe 'Poblado Yolanda 5 Puerta 681' en campo direcci&oacute;n (completed)" width="0"/>
+                <img src="f3e14cb2691f5ca0d58be44d5d430d0ad104c7e584359020f3e78474b12e93d7.png" title=" Carlos escribe 'Badajoz' en campo ciudad" width="0"/>
+                <img src="f3e14cb2691f5ca0d58be44d5d430d0ad104c7e584359020f3e78474b12e93d7.png" title=" Carlos clears field campo ciudad" width="0"/>
+                <img src="dbaebdece7ba62f495efda9708ec4bcce7be4592ca78384833f2b58f3b755b03.png" title=" Carlos clears field campo ciudad (completed)" width="0"/>
+                <img src="dbaebdece7ba62f495efda9708ec4bcce7be4592ca78384833f2b58f3b755b03.png" title=" Carlos enters 'Badajoz' into campo ciudad" width="0"/>
+                <img src="f627b084e0ce3fa367f454a2ed6a98d7228d0fedf018925948e4d500afcce49e.png" title=" Carlos enters 'Badajoz' into campo ciudad (completed)" width="0"/>
+                <img src="f627b084e0ce3fa367f454a2ed6a98d7228d0fedf018925948e4d500afcce49e.png" title=" Carlos escribe 'Badajoz' en campo ciudad (completed)" width="0"/>
+                <img src="f627b084e0ce3fa367f454a2ed6a98d7228d0fedf018925948e4d500afcce49e.png" title=" Carlos escribe 'Cantabria' en campo estado" width="0"/>
+                <img src="0eb8ee0021ac80f290046b0dda11c0db7ce4d6af90d8824805321c8f5696bb42.png" title=" Carlos clears field campo estado" width="0"/>
+                <img src="dc63df50675e8cd0b7bc53bedfdd288531cd6bebb92e73b4233caaf14bf64062.png" title=" Carlos clears field campo estado (completed)" width="0"/>
+                <img src="dc63df50675e8cd0b7bc53bedfdd288531cd6bebb92e73b4233caaf14bf64062.png" title=" Carlos enters 'Cantabria' into campo estado" width="0"/>
+                <img src="5c086d57c42e36de019a868db482a70f0c64d3816878d538289023a49c8ef8c4.png" title=" Carlos enters 'Cantabria' into campo estado (completed)" width="0"/>
+                <img src="5c086d57c42e36de019a868db482a70f0c64d3816878d538289023a49c8ef8c4.png" title=" Carlos escribe 'Cantabria' en campo estado (completed)" width="0"/>
+                <img src="3b319db2d6f85bc8f01fa12c762c4f5a6e7b796ea5addf6fe3f3f25250c9e23b.png" title=" Carlos escribe '44301' en campo c&oacute;digo postal" width="0"/>
+                <img src="3b319db2d6f85bc8f01fa12c762c4f5a6e7b796ea5addf6fe3f3f25250c9e23b.png" title=" Carlos clears field campo c&oacute;digo postal" width="0"/>
+                <img src="3b319db2d6f85bc8f01fa12c762c4f5a6e7b796ea5addf6fe3f3f25250c9e23b.png" title=" Carlos enters '44301' into campo c&oacute;digo postal" width="0"/>
+                <img src="8de8c3521d3979a9e47f4993d5faae7659239887f65fe726ff6cbd9fbcfa604b.png" title=" Carlos enters '44301' into campo c&oacute;digo postal (completed)" width="0"/>
+                <img src="8de8c3521d3979a9e47f4993d5faae7659239887f65fe726ff6cbd9fbcfa604b.png" title=" Carlos escribe '44301' en campo c&oacute;digo postal (completed)" width="0"/>
+                <img src="8de8c3521d3979a9e47f4993d5faae7659239887f65fe726ff6cbd9fbcfa604b.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta" width="0"/>
+                <img src="d2fafe1fb846d8267f09fed17f7cf04d6bcc7fb11485f227f64304b4af8dd79d.png" title=" Carlos selects Visa on lista tipo de tarjeta" width="0"/>
+                <img src="d2fafe1fb846d8267f09fed17f7cf04d6bcc7fb11485f227f64304b4af8dd79d.png" title=" Carlos selecciona 'Visa' en lista tipo de tarjeta (completed)" width="0"/>
+                <img src="d2fafe1fb846d8267f09fed17f7cf04d6bcc7fb11485f227f64304b4af8dd79d.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="d2fafe1fb846d8267f09fed17f7cf04d6bcc7fb11485f227f64304b4af8dd79d.png" title=" Carlos clears field campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="d2fafe1fb846d8267f09fed17f7cf04d6bcc7fb11485f227f64304b4af8dd79d.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta" width="0"/>
+                <img src="5f374297c282d88ca7960fa9df24a89eba914070dc41c2b7a40858c049059f0b.png" title=" Carlos enters '4111111111111111' into campo n&uacute;mero de tarjeta (completed)" width="0"/>
+                <img src="5f374297c282d88ca7960fa9df24a89eba914070dc41c2b7a40858c049059f0b.png" title=" Carlos escribe '4111111111111111' en campo n&uacute;mero de tarjeta (completed)" width="0"/>
+                <img src="5f374297c282d88ca7960fa9df24a89eba914070dc41c2b7a40858c049059f0b.png" title=" Carlos escribe '3' en campo mes" width="0"/>
+                <img src="9b9423d8f3a86b98f7a2998774c12e8cc14a8b5259ac6167969340c7ef0f9e23.png" title=" Carlos clears field campo mes" width="0"/>
+                <img src="40c8eb5983c88fb918144d1544491ba8ee95a5194291f7ad386a312112ae2eee.png" title=" Carlos clears field campo mes (completed)" width="0"/>
+                <img src="40c8eb5983c88fb918144d1544491ba8ee95a5194291f7ad386a312112ae2eee.png" title=" Carlos enters '3' into campo mes" width="0"/>
+                <img src="9e54169b65e2b0bd1a9c9c85c900201152a7783b2613248aad8a28847fb047f5.png" title=" Carlos enters '3' into campo mes (completed)" width="0"/>
+                <img src="9e54169b65e2b0bd1a9c9c85c900201152a7783b2613248aad8a28847fb047f5.png" title=" Carlos escribe '3' en campo mes (completed)" width="0"/>
+                <img src="9e54169b65e2b0bd1a9c9c85c900201152a7783b2613248aad8a28847fb047f5.png" title=" Carlos escribe '2027' en campo a&ntilde;o" width="0"/>
+                <img src="9e54169b65e2b0bd1a9c9c85c900201152a7783b2613248aad8a28847fb047f5.png" title=" Carlos clears field campo a&ntilde;o" width="0"/>
+                <img src="fc7c989ff44e5e6d3737b813bbe85e32c0fdb9f7230d7997c232a8c82bc57467.png" title=" Carlos clears field campo a&ntilde;o (completed)" width="0"/>
+                <img src="fc7c989ff44e5e6d3737b813bbe85e32c0fdb9f7230d7997c232a8c82bc57467.png" title=" Carlos enters '2027' into campo a&ntilde;o" width="0"/>
+                <img src="6e19ce6ec9bbfd4c3a9128bb8f087f8a3bdd39099134e2cefcb27401c2d91133.png" title=" Carlos enters '2027' into campo a&ntilde;o (completed)" width="0"/>
+                <img src="6e19ce6ec9bbfd4c3a9128bb8f087f8a3bdd39099134e2cefcb27401c2d91133.png" title=" Carlos escribe '2027' en campo a&ntilde;o (completed)" width="0"/>
+                <img src="6e19ce6ec9bbfd4c3a9128bb8f087f8a3bdd39099134e2cefcb27401c2d91133.png" title=" Carlos escribe 'Patricio Mej&iacute;a' en campo nombre en la tarjeta" width="0"/>
+                <img src="6e19ce6ec9bbfd4c3a9128bb8f087f8a3bdd39099134e2cefcb27401c2d91133.png" title=" Carlos clears field campo nombre en la tarjeta" width="0"/>
+                <img src="292b73cf17866dfebeb69c6594f041aaa6dc73c62709210e8bf8dd541d281ace.png" title=" Carlos clears field campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="292b73cf17866dfebeb69c6594f041aaa6dc73c62709210e8bf8dd541d281ace.png" title=" Carlos enters 'Patricio Mej&iacute;a' into campo nombre en la tarjeta" width="0"/>
+                <img src="ef8d62b770ecead643453babf480b76d9acab13126fa80c5a4c1865a7ef0370c.png" title=" Carlos enters 'Patricio Mej&iacute;a' into campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="ef8d62b770ecead643453babf480b76d9acab13126fa80c5a4c1865a7ef0370c.png" title=" Carlos escribe 'Patricio Mej&iacute;a' en campo nombre en la tarjeta (completed)" width="0"/>
+                <img src="ef8d62b770ecead643453babf480b76d9acab13126fa80c5a4c1865a7ef0370c.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight" width="0"/>
+                <img src="57028e7e093ac1daa89fb490d405f190b880b61d0552ad9fc0df03914eaec1ce.png" title=" Carlos clicks on bot&oacute;n Purchase Flight" width="0"/>
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Carlos clicks on bot&oacute;n Purchase Flight (completed)" width="0"/>
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Carlos hace clic en bot&oacute;n Purchase Flight (completed)" width="0"/>
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Carlos completa el pago del vuelo a nombre de 'DatosPago(nombre=Patricio Mej&iacute;a, direccion=Poblado Yolanda 5 Puerta 681, ciudad=Badajoz, estado=Cantabria, codigoPostal=44301, tipoTarjeta=Visa, numeroTarjeta=4111111111111111, mes=3, anio=2027, nombreEnTarjeta=Patricio Mej&iacute;a, recordarDatos=false).nombre' (completed)" width="0"/>
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Y completa el pago de un pasajero aleatorio con tarjeta &quot;Visa&quot; (completed)" width="0"/>
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Entonces la confirmaci&oacute;n debe registrar la fecha de hoy" width="0"/>
+
+                <img src="e8fba9a2fc2398e3f499497e91b399475c828ce20567a59cb74eb71dab0b9eba.png" title=" Then dato de la confirmacion should be a string containing '17 Nov 2026': <span class='success-color'>SUCCESS</span>" width="0"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.1.3</span>
+</div>
+</body>
+</html>

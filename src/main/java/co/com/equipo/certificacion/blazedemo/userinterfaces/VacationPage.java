@@ -6,6 +6,8 @@ import net.serenitybdd.screenplay.targets.Target;
 public final class VacationPage {
     public static final Target DESTINO = Target.the("destino de la semana")
             .locatedBy("//div[@class=\"container\"][contains(normalize-space(),\"Destination of the week\")]");
+    public static final Target IMAGEN_DESTINO = Target.the("imagen del destino de la semana")
+            .locatedBy("css:img.img-rounded");
 
     private VacationPage() {
     }

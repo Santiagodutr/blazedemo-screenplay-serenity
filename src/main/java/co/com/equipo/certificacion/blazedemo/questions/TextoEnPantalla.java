@@ -14,6 +14,16 @@ public final class TextoEnPantalla {
     private TextoEnPantalla() {
     }
 
+    /** Encabezado de una columna de la tabla de resultados (4 = "Departs: X", 5 = "Arrives: Y"). */
+    public static Question<String> encabezadoDeColumna(int columna) {
+        return texto("el encabezado de la columna " + columna, ReservePage.ENCABEZADO_COLUMNA.of(String.valueOf(columna)));
+    }
+
+    /** Título del formulario de las páginas de cuenta ("Login", "Register", "Reset Password"). */
+    public static Question<String> tituloDelFormulario() {
+        return texto("el título del formulario", co.com.equipo.certificacion.blazedemo.userinterfaces.CuentaPage.TITULO_FORMULARIO);
+    }
+
     /** Título de la página de resultados ("Flights from X to Y:"). */
     public static Question<String> tituloDeResultados() {
         return texto("el título de resultados", ReservePage.TITULO_RESULTADOS);

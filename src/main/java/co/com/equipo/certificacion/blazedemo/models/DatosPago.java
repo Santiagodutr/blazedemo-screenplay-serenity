@@ -46,4 +46,17 @@ public class DatosPago {
     public static DatosPago vacio() {
         return DatosPago.builder().build();
     }
+
+    /** Solo los datos mínimos: nombre del pasajero y número de tarjeta. */
+    public static DatosPago minimos(String nombre, String numeroTarjeta) {
+        return DatosPago.builder().nombre(nombre).numeroTarjeta(numeroTarjeta).build();
+    }
+
+    /** Todos los campos de texto con espacios en blanco (parecen llenos pero no tienen datos). */
+    public static DatosPago soloEspacios() {
+        String espacios = "   ";
+        return DatosPago.builder().nombre(espacios).direccion(espacios).ciudad(espacios).estado(espacios)
+                .codigoPostal(espacios).numeroTarjeta(espacios).mes(espacios).anio(espacios)
+                .nombreEnTarjeta(espacios).build();
+    }
 }

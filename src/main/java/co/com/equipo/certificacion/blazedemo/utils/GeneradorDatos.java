@@ -18,6 +18,11 @@ public final class GeneradorDatos {
     private GeneradorDatos() {
     }
 
+    /** Texto aleatorio de letras con la longitud exacta pedida (para escenarios límite). */
+    public static String textoDeLongitud(int longitud) {
+        return FAKER.lorem().characters(longitud, longitud, false, false);
+    }
+
     /** Pasajero aleatorio con datos de tarjeta válidos (vence dentro de 1 a 5 años). */
     public static DatosPago pasajeroAleatorio(String tipoTarjeta) {
         String nombre = FAKER.name().firstName() + " " + FAKER.name().lastName();
