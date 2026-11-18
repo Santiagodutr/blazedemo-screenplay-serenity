@@ -7,7 +7,7 @@ Prueba E2E que **busca vuelos, elige uno, llena el formulario de pago y valida p
 
 | Resultado | Valor |
 |---|---|
-| Suite principal (`BlazeDemoRunner`) | **61 / 61 ejecuciones en verde**: 47 escenarios en 3 features, 4 Scenario Outline (18 filas de Examples) |
+| Suite principal (`BlazeDemoRunner`) | **62 / 62 ejecuciones en verde**: 47 escenarios en 3 features, 4 Scenario Outline (19 filas de Examples) |
 | Defectos conocidos (`KnownIssuesRunner`) | 3 escenarios que **fallan a propósito** y documentan defectos del sitio |
 | Reporte | `target/site/serenity/index.html` (copia en `evidencias/reportes/`) |
 
@@ -69,8 +69,8 @@ Javadoc en cada clase.
 
 ## 3. Escenarios (Gherkin)
 
-**47 escenarios** (61 ejecuciones) en la suite principal + 3 `@known-issue`. Por tipo de ejecución: 19 ruta feliz,
-27 alternos, 8 negativos y 7 límite (3 de ellos también `@security`). Por feature: búsqueda 28, compra 28, cuenta 5.
+**47 escenarios** (62 ejecuciones) en la suite principal + 3 `@known-issue`. Por tipo de ejecución: 20 ruta feliz,
+27 alternos, 8 negativos y 7 límite (3 de ellos también `@security`). Por feature: búsqueda 28, compra 29, cuenta 5.
 
 | Feature | Escenarios destacados |
 |---|---|
@@ -131,11 +131,11 @@ gradlew.bat clean test "-Dheadless.mode=true"
 
 | Carpeta / archivo | Contenido |
 |---|---|
-| `reportes/suite-principal/index.html` | Reporte histórico de la suite principal (61/61), con 494 capturas paso a paso |
+| `reportes/suite-principal/index.html` | Reporte de la suite principal (62/62), con 594 capturas paso a paso |
 | `reportes/defectos-conocidos/index.html` | Reporte de los 3 defectos del sitio |
 | `reporte-serenity-tarjetas-prueba.zip` | Corrida reciente de tarjetas con 4/4 casos aprobados en navegador. Extraer y abrir `index.html`. |
 | `reporte-serenity-suite-principal.zip` y `reporte-serenity-defectos-conocidos.zip` | Copias comprimidas de los reportes históricos |
-| `videos/suite-principal/*.gif` | **61 videos GIF**, uno por ejecución, con paso Gherkin y resultado sobreimpresos |
+| `videos/suite-principal/*.gif` | **62 videos GIF**, uno por ejecución, con paso Gherkin y resultado sobreimpresos |
 | `videos/defectos-conocidos/*.gif` | 3 GIFs de los defectos |
 | `capturas/01…16_*.png` | Capturas del reporte: resumen, ruta feliz, Outlines, hallazgos, defectos, cuenta |
 | `capturas/E2E_1…4_*.png` | Pantallas reales del flujo: home → resultados → pago → confirmación |
@@ -148,7 +148,7 @@ Prueba del delay: el mismo escenario E2E tardó **25 s sin pausa** y **40 s con 
 
 | Principio | Cómo se cumple en este proyecto (ejemplo concreto) |
 |---|---|
-| **F**ast | `demo.delay = 0` por defecto en `serenity.conf`: la `Pausa` no duerme salvo en la sustentación. Sincronización con esperas explícitas (`WaitUntil.the(BTN_COMPRAR, isVisible()).forNoMoreThan(15).seconds()` en `ElegirVuelo`), nunca `sleep` fijos. Soporta `headless.mode=true`. Suite completa (61 ejecuciones): 5 min 34 s, mediana 1,7 s por escenario. |
+| **F**ast | `demo.delay = 0` por defecto en `serenity.conf`: la `Pausa` no duerme salvo en la sustentación. Sincronización con esperas explícitas (`WaitUntil.the(BTN_COMPRAR, isVisible()).forNoMoreThan(15).seconds()` en `ElegirVuelo`), nunca `sleep` fijos. Soporta `headless.mode=true`. Suite completa (62 ejecuciones): 8 min 3 s en la última corrida, promedio 4 s por ejecución. |
 | **I**ndependent | Cada escenario arranca desde `Background` (abre la página), `Hooks` crea un `OnlineCast` nuevo y `restart.browser.for.each = scenario` da un navegador limpio. No hay variables estáticas compartidas: el estado vive en la memoria del actor (`actor.remember/recall`). Los runners por tag ejecutan cualquier subconjunto en cualquier orden. |
 | **R**epeatable | Sin usuarios ni datos persistentes. Los datos aleatorios de Datafaker siempre son válidos (tarjeta de prueba, vencimiento futuro), así que el resultado esperado no cambia. URL en `serenity.conf`, versiones fijas en `build.gradle` y wrapper de Gradle: mismo resultado en cualquier máquina o en CI (GitHub Actions). Se corrió la suite varias veces con el mismo resultado. |
 | **S**elf-validating | Cada `Then` usa `seeThat(...)` con matchers de Hamcrest (`equalTo`, `comparesEqualTo`, `greaterThan`, `hasItem`…). El resultado es PASSED/FAILED sin revisión manual; los precios se normalizan a `BigDecimal` (`ConvertirPrecio`). |
