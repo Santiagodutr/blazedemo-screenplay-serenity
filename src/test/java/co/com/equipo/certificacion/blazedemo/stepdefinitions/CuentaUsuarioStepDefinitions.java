@@ -7,9 +7,9 @@ import co.com.equipo.certificacion.blazedemo.tasks.AbrirPaginaDirecta;
 import co.com.equipo.certificacion.blazedemo.tasks.NavegarPorLaBarra;
 import co.com.equipo.certificacion.blazedemo.tasks.RecuperarContrasena;
 import co.com.equipo.certificacion.blazedemo.userinterfaces.HomePage;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.es.Cuando;
+import io.cucumber.java.es.Dado;
+import io.cucumber.java.es.Entonces;
 
 import java.util.List;
 
@@ -25,27 +25,27 @@ import static org.hamcrest.Matchers.equalTo;
 /** Pasos de navegación por la barra superior y de las páginas de cuenta (login, registro, recuperación). */
 public class CuentaUsuarioStepDefinitions {
 
-    @Given("que {word} abre la página de inicio de sesión de BlazeDemo")
+    @Dado("que {word} abre la página de inicio de sesión de BlazeDemo")
     public void queElViajeroAbreElInicioDeSesion(String viajero) {
         theActorCalled(viajero).wasAbleTo(AbrirPaginaDirecta.deInicioDeSesion());
     }
 
-    @When("navega con el enlace {string} de la barra superior")
+    @Cuando("navega con el enlace {string} de la barra superior")
     public void navegaConElEnlaceDeLaBarra(String enlace) {
         theActorInTheSpotlight().attemptsTo(NavegarPorLaBarra.alEnlace(enlace));
     }
 
-    @When("elige la opción de recuperar la contraseña")
+    @Cuando("elige la opción de recuperar la contraseña")
     public void eligeRecuperarLaContrasena() {
         theActorInTheSpotlight().attemptsTo(RecuperarContrasena.desdeElInicioDeSesion());
     }
 
-    @Then("debe ver la página principal de búsqueda")
+    @Entonces("debe ver la página principal de búsqueda")
     public void debeVerLaPaginaPrincipal() {
         theActorInTheSpotlight().should(seeThat(the(HomePage.BTN_BUSCAR_VUELOS), isVisible()));
     }
 
-    @Then("debe llegar a la página de inicio de sesión")
+    @Entonces("debe llegar a la página de inicio de sesión")
     public void debeLlegarAlInicioDeSesion() {
         theActorInTheSpotlight().should(
                 seeThat(PaginaActual.direccion(), containsString("/login")),
@@ -53,12 +53,12 @@ public class CuentaUsuarioStepDefinitions {
         );
     }
 
-    @Then("debe ver el formulario {string}")
+    @Entonces("debe ver el formulario {string}")
     public void debeVerElFormulario(String titulo) {
         theActorInTheSpotlight().should(seeThat(TextoEnPantalla.tituloDelFormulario(), equalTo(titulo)));
     }
 
-    @Then("el formulario debe marcar como obligatorios los campos")
+    @Entonces("el formulario debe marcar como obligatorios los campos")
     public void elFormularioDebeMarcarObligatorios(List<String> campos) {
         theActorInTheSpotlight().should(seeThat(CamposObligatorios.delFormulario(),
                 containsInAnyOrder(campos.toArray(new String[0]))));
